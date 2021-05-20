@@ -34,28 +34,27 @@ db = SQL("sqlite:///timer.db")
 def index():
     """"Fill out form"""
     if request.method == "POST":
-        exam_name = request.form.get("exam_name")
         length = request.form.get("length")
         mc_count = request.form.get("mc_count")
-        sa_count = request.form.get("sa_count")
-        la_count = request.form.get("la_count")
         typet = request.form.get("typet")
-        print("typet")
-        print(typet)
         
         if not length:
-            return render_template("sorry.html")
-        if not (mc_count or sa_count or la_count):
-            return render_template("sorry.html")
+            sorry = "You didn't enter an exam length"
+            return render_template("sorry.html", sorry=sorry)
+        if not mc_count:
+            sorry = "You didn't enter an amount of questions"
+            return render_template("sorry.html", sorry=sorry)
         
-        if (typet == 'yes'):
-            return render_template("fancytimer.html", exam_name=exam_name, length=length, mc_count=mc_count, sa_count=sa_count, la_count=la_count)
+        if (typet == 'manual'):
+            return render_template("fancytimer.html", length=length, mc_count=mc_count)
         else:
-            return render_template("regulartimer.html", exam_name=exam_name, length=length, mc_count=mc_count, sa_count=sa_count, la_count=la_count)
+            return render_template("regulartimer.html", length=length, mc_count=mc_count)
     else:
         return render_template("index.html")
-        
-@app.route("/timer", methods=["GET"])
-def timer():
-    """Show timer"""
-    return render_template("timer.html")
+
+@app.route("/sorry", methods=["GET", "POST"])
+def sorry():
+    if request.method == "POST":
+        return redirect("/")
+    else:
+        return render_template("sorry.html")

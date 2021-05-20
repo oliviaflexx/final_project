@@ -1,39 +1,24 @@
 {% extends "layout.html" %}
 
 {% block main %}
-<p>I need some information to create the timer. Please fill out this form</p>
 <form action="/" method="post">
         <div class="form-group">
-            <label for "exam_name">Name of your exam</label>
-            <input autocomplete="off" autofocus class="form-control" name="exam_name" placeholder="Enter name" type="text">
-            <p class="example">Ex: Psych 212</p>
+            <label for "length">Total length of exam (hours)</label>
+            <br>
+            <input class="form-control" name="length" type="text">
+            <small id="example" class="form-text text-muted">Ex: Enter 3.5 if exam is 3 and a half hours</small>
         </div>
         <div class="form-group">
-            <label for "length">Total length of exam</label>
-            <input class="form-control" name="length" placeholder="Enter length" type="text">
-            <p class="example">Ex: Enter 3.5 if exam is 3 and a half hours</p>
+            <label for "mc_count">Amount of questions</label>
+            <br>
+            <input class="form-control" name="mc_count" type="text">
+            <small id="example" class="form-text text-muted">Ex: Enter 30 if there are 30 multiple choice questions or 0 if there are none</small>
         </div>
         <div class="form-group">
-            <label for "mc_count">Amount of Multiple Choice questions</label>
-            <input class="form-control" name="mc_count" placeholder="Enter amount" type="text">
-            <p class="example">Ex: Enter 30 if there are 30 multiple choice questions or 0 if there are none</p>
-        </div>
-        <div class="form-group">
-            <label for "sa_count">Amount of Short Answer questions</label>
-            <input class="form-control" name="sa_count" placeholder="Enter amount" type="text">
-            <p class="example">Ex: Enter 30 if there are 30 short answer questions or 0 if there are none</p>
-        </div>
-        <div class="form-group">
-            <label for "exam_name">Amount of Long Answer questions</label>
-            <input class="form-control" name="la_count" placeholder="Enter amount" type="text">
-            <p class="example">Ex: Enter 30 if there are 30 long answer questions or 0 if there are none</p>
-        </div>
-        <div class="form-group">
-              <label for="typet">Would you like a fancy timer?</label>
-              <select class="form-control" name="typet">
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-              </select>
+            <input class="form-check-input" type="radio" name="typet" value="automatic">
+            <label class="form-check-label" for="typet">Automatic</label> <br>
+            <input class="form-check-input" type="radio" name="typet" value="manual">
+            <label class="form-check-label" for="typet">Manual</label>
         </div>
         <button class="btn btn-primary" type="submit">Submit</button>
     </form>

@@ -52,7 +52,7 @@ function initializeClockp(id, endtime, pendtime) {
   const pminutesSpan = clock.querySelector('.pminutes');
   const psecondsSpan = clock.querySelector('.pseconds');
   var treset = 1;
-  document.getElementById('question').innerHTML = up;
+  document.getElementById('question').innerHTML = "Question #" + up;
   
   function updateClockp() {
     const t = getTimeRemaining(pendtime);
@@ -76,7 +76,7 @@ function initializeClockp(id, endtime, pendtime) {
       const qdeadline = makeQuestionDeadline(length, mc_count);
       initializeClockp('pclockdiv', deadline, qdeadline);
       up = up + 1;
-      document.getElementById('question').innerHTML = up;
+      document.getElementById('question').innerHTML = "Question # " + up;
       treset = 1;
     }
   }
