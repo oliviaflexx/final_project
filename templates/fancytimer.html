@@ -1,24 +1,8 @@
 {% extends "layout.html" %}
 
 {% block main %}
-
-<h1>{{ exam_name }} Countdown Clock</h1>
 <div>
   <button id="start">Begin</button>
-</div>
-<div id="oclockdiv">
-  <div>
-    <span class="ohours"></span>
-    <div class="smalltext">Hours</div>
-  </div>
-  <div>
-    <span class="ominutes"></span>
-    <div class="smalltext">Minutes</div>
-  </div>
-  <div>
-    <span class="oseconds"></span>
-    <div class="smalltext">Seconds</div>
-  </div>
 </div>
 
 <div>
@@ -38,8 +22,25 @@
     <div class="smalltext">Seconds</div>
   </div>
 </div>
+<br>
 <div>
   <button id="next" onclick="stop()">Next</button>
+</div>
+<br>
+<h2>Overall Exam Clock</h2>
+<div id="oclockdiv">
+  <div>
+    <span class="ohours"></span>
+    <div class="smalltext">Hours</div>
+  </div>
+  <div>
+    <span class="ominutes"></span>
+    <div class="smalltext">Minutes</div>
+  </div>
+  <div>
+    <span class="oseconds"></span>
+    <div class="smalltext">Seconds</div>
+  </div>
 </div>
 <div id="length" class="hidden">{{ length }}</div>
 <div id="mc_count" class="hidden">{{ mc_count }}</div>

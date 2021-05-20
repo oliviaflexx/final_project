@@ -1,14 +1,20 @@
 h1
 {
     text-align: center;
+    font-family: 'Domine', sans-serif;
+}
+body {
+  background: linear-gradient(to right, #f6c309, #fadb6b);
 }
 main
 {
     /* Scroll horizontally as needed */
     overflow-x: auto;
-
+    font-family: 'Domine', sans-serif;
+    color: #41360D;
     /* Center contents */
     text-align: center;
+    background-color: #fadb6b;
 }
 
 main .form-control
@@ -25,31 +31,27 @@ label
     font-weight: bold;
 }
 
-.placeholder {
-    text-align: center;
-}
-
 #oclockdiv{
-  font-family: sans-serif;
   color: #fff;
   display: inline-block;
   font-weight: 100;
   text-align: center;
   font-size: 30px;
+  background: linear-gradient(to right, #f6c309, #fadb6b);
+  box-shadow: 0 0 0 10px white;
 }
 
 #oclockdiv > div{
   padding: 10px;
   border-radius: 3px;
-  background: #00BF96;
   display: inline-block;
 }
 
 #oclockdiv div > span{
   padding: 15px;
   border-radius: 3px;
-  background: #00816A;
   display: inline-block;
+  background: linear-gradient(to right, #fdb768, #fb8604);
 }
 
 .smalltext{
@@ -58,28 +60,61 @@ label
 }
 
 #pclockdiv{
-  font-family: sans-serif;
-  color: #fff;
   display: inline-block;
   font-weight: 100;
   text-align: center;
   font-size: 30px;
+  background: linear-gradient(to right, #f6c309, #fadb6b);
+  box-shadow: 0 0 0 10px white;
+  margin-bottom: 20px;
 }
 
 #pclockdiv > div{
   padding: 10px;
   border-radius: 3px;
-  background: #00BF96;
   display: inline-block;
 }
 
 #pclockdiv div > span{
   padding: 15px;
   border-radius: 3px;
-  background: #00816A;
   display: inline-block;
+  background: linear-gradient(to right, #fdb768, #fb8604);
+  font-size: 150%;
 }
 
 .hidden {
   visibility: hidden;
+}
+
+main .form-control {
+  width: 5em;
+}
+
+button {
+  display:inline-block;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin:0 0.3em 0.3em 0;
+ border-radius:0.15em;
+ text-decoration:none;
+ font-weight:400;
+ color:#FFFFFF;
+ background-color:#3369ff;
+ box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
+ text-align:center;
+ position:relative;
+ text-transform:uppercase;
+ font-size: 20px;
+}
+
+ button:active{
+ top:0.1em;
+}
+
+@media all and (max-width:30em){
+ button{
+  display:block;
+  margin:0.4em auto;
+ }
 }
