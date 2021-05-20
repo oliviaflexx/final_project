@@ -1,6 +1,6 @@
 // Functions for overall timer
 function makedeadline(length) {
-    const deadline = new Date(Date.parse(new Date()) + length * 60 * 60 * 1000);
+    const deadline = new Date(Date.parse(new Date()) + length);
     return deadline;
 }
 function getTimeRemaining(endtime) {
@@ -42,23 +42,21 @@ function initializeClock(id, endtime) {
 
 // Functions for per question timer
 function clicky(endtime) {
-  // update counter
-  counter = counter + 1;
-  // update question number with counter
-  document.getElementById('question').innerHTML = counter;
   // update multiple choice count
   mc_count = mc_count - 1;
   if (mc_count <= 0) {
-    clearInterval(timeintervalp);
-    document.getElementById('question').innerHTML = "All questions finished";
+    document.getElementById('question').innerHTML = "All questions finished!";
     return;
   }
-  
+  // update counter
+  counter = counter + 1;
+  // update question number with counter
+  document.getElementById('question').innerHTML = "Question #" + counter;
   // find out how much time left there is for the exam
   cdeadline0 = getTimeRemaining(endtime);
   //find out how much time there is per question
-  cdeadline1 = cdeadline0.ototal / 3600000;
-  pquestiontime = cdeadline1 / (mc_count + 1);
+  cdeadline1 = cdeadline0.ototal;
+  pquestiontime = cdeadline1 / mc_count;
   // make a deadline for that question
   qdeadline = makedeadline(pquestiontime);
   
@@ -78,14 +76,23 @@ function clicky2(qdeadline, endtime) {
     const t = getTimeRemaining(qdeadline);
     const ot = getTimeRemaining(endtime);
     
-    phoursSpan.innerHTML = ('0' + t.ohours).slice(-2);
-    pminutesSpan.innerHTML = ('0' + t.ominutes).slice(-2);
-    psecondsSpan.innerHTML = ('0' + t.oseconds).slice(-2);
+    if (w == 1) {
+      t.ototal = 1;
+      phoursSpan.innerHTML = '00';
+      pminutesSpan.innerHTML = '00';
+      psecondsSpan.innerHTML = '00';
+    }
+    else {
+      phoursSpan.innerHTML = ('0' + t.ohours).slice(-2);
+      pminutesSpan.innerHTML = ('0' + t.ominutes).slice(-2);
+      psecondsSpan.innerHTML = ('0' + t.oseconds).slice(-2);
+    }
+    
     
     if (t.ototal <= 0) {
-      clearInterval(timeintervalp);
-      document.getElementById('question').innerHTML = "No time for this question left";
-      return;
+      newcounter = document.getElementById('question').innerHTML;
+      document.getElementById('question').innerHTML = "No time for " + newcounter + " left";
+      w = 1;
     }
     if (ot.ototal <= 0) {
       clearInterval(timeintervalp);
@@ -96,6 +103,7 @@ function clicky2(qdeadline, endtime) {
       clearInterval(timeintervalp);
       x = 0;
       y = 1;
+      w = 0;
     }
     if (y == 1) {
       qdeadline0 = clicky(deadline);
@@ -111,11 +119,12 @@ function stop() {
   x = 1;
 }
 var length0 = document.getElementById('length');
-var length = Number(length0.innerHTML);
+var length = Number(length0.innerHTML) * 60 * 60 * 1000;
 var c = 1;
 const deadline = makedeadline(length);
 var x = 0;
 var y = 0;
+var w = 0;
 
 var mc_count0 = document.getElementById('mc_count');
 var mc_count = Number(mc_count0.innerHTML) + 1;
