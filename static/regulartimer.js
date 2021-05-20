@@ -51,7 +51,6 @@ function initializeClockp(id, endtime, pendtime) {
   const phoursSpan = clock.querySelector('.phours');
   const pminutesSpan = clock.querySelector('.pminutes');
   const psecondsSpan = clock.querySelector('.pseconds');
-  var up = 1;
   var treset = 1;
   document.getElementById('question').innerHTML = up;
   
@@ -65,8 +64,6 @@ function initializeClockp(id, endtime, pendtime) {
 
     if (t.ototal <= 0) {
       clearInterval(timeintervalp);
-      up = up + 1;
-      document.getElementById('question').innerHTML = up;
       treset = 0;
     }
     
@@ -78,6 +75,8 @@ function initializeClockp(id, endtime, pendtime) {
     if (treset == 0) {
       const qdeadline = makeQuestionDeadline(length, mc_count);
       initializeClockp('pclockdiv', deadline, qdeadline);
+      up = up + 1;
+      document.getElementById('question').innerHTML = up;
       treset = 1;
     }
   }
@@ -91,6 +90,7 @@ var length0 = document.getElementById('length');
 var length = Number(length0.innerHTML);
 var mc_count0 = document.getElementById('mc_count');
 var mc_count = Number(mc_count0.innerHTML);
+var up = 1;
 
 const deadline = makedeadline(length);
 const qdeadline = makeQuestionDeadline(length, mc_count);
