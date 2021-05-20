@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<p>This is where the timer will go</p>
+<h1>Countdown Clock</h1>
+<div>
+  <button id="start">Begin</button>
+</div>
+<div id="oclockdiv">
+  <div>
+    <span class="ohours"></span>
+    <div class="smalltext">Hours</div>
+  </div>
+  <div>
+    <span class="ominutes"></span>
+    <div class="smalltext">Minutes</div>
+  </div>
+  <div>
+    <span class="oseconds"></span>
+    <div class="smalltext">Seconds</div>
+  </div>
+</div>
+
+<div>
+  <h1>Question # <span id="question"></span></h1>
+</div>
+<div id="pclockdiv">
+  <div>
+    <span class="phours"></span>
+    <div class="smalltext">Hours</div>
+  </div>
+  <div>
+    <span class="pminutes"></span>
+    <div class="smalltext">Minutes</div>
+  </div>
+  <div>
+    <span class="pseconds"></span>
+    <div class="smalltext">Seconds</div>
+  </div>
+</div>
+<div id="length" class="hidden">{{ length }}</div>
+<div id="mc_count" class="hidden">{{ mc_count }}</div>
+<script src="/static/regulartimer.js"></script>
+{% endblock %}
