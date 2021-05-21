@@ -1,10 +1,8 @@
 import os
 
-from cs50 import SQL
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
 from tempfile import mkdtemp
-from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
 
 # Configure application
 app = Flask(__name__)
@@ -27,9 +25,6 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-# Configure CS50 Library to use SQLite database
-db = SQL("sqlite:///timer.db")
-
 @app.route("/", methods=["GET", "POST"])
 def index():
     """"Fill out form"""
@@ -38,13 +33,13 @@ def index():
         mc_count = request.form.get("mc_count")
         typet = request.form.get("typet")
         
-        if not length:
+        if not length or length == '0':
             sorry = "You didn't enter an exam length"
             return render_template("sorry.html", sorry=sorry)
-        if not mc_count:
+        if not mc_count or mc_count == '0':
             sorry = "You didn't enter an amount of questions"
             return render_template("sorry.html", sorry=sorry)
-        
+            
         if (typet == 'manual'):
             return render_template("fancytimer.html", length=length, mc_count=mc_count)
         else:

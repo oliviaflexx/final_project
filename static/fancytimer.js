@@ -106,10 +106,10 @@ function clicky2(qdeadline, endtime) {
       w = 0;
     }
     if (y == 1) {
-      qdeadline0 = clicky(deadline);
+      qdeadline0 = clicky(endtime);
       qdeadline = qdeadline0.qdeadline;
       y = 0;
-      clicky2(qdeadline, deadline);
+      clicky2(qdeadline, endtime);
     }
   }
   newUpdateClock();
@@ -121,7 +121,6 @@ function stop() {
 var length0 = document.getElementById('length');
 var length = Number(length0.innerHTML) * 60 * 60 * 1000;
 var c = 1;
-const deadline = makedeadline(length);
 var x = 0;
 var y = 0;
 var w = 0;
@@ -131,9 +130,11 @@ var mc_count = Number(mc_count0.innerHTML) + 1;
 var counter = 0;
 
 document.getElementById('start').addEventListener('click', function () {
+  const deadline = makedeadline(length);
   initializeClock('oclockdiv', deadline);
   qdeadline0 = clicky(deadline);
   qdeadline = qdeadline0.qdeadline;
   clicky2(qdeadline, deadline);
   document.getElementById('start').style.visibility = "hidden";
+  document.getElementById('next').style.visibility = "visible";
 });

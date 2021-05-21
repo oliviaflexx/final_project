@@ -1,7 +1,7 @@
 h1
 {
-    text-align: center;
-    font-family: 'Domine', sans-serif;
+  text-align: center;
+  font-family: 'Domine', sans-serif;
 }
 body {
   background: linear-gradient(to right, #f6c309, #fadb6b);
@@ -14,7 +14,6 @@ main
     color: #41360D;
     /* Center contents */
     text-align: center;
-    background-color: #fadb6b;
 }
 
 main .form-control
@@ -29,6 +28,7 @@ main .form-control
 label
 {
     font-weight: bold;
+    font-size: large;
 }
 
 #oclockdiv{
@@ -38,7 +38,7 @@ label
   text-align: center;
   font-size: 30px;
   background: linear-gradient(to right, #f6c309, #fadb6b);
-  box-shadow: 0 0 0 10px white;
+  box-shadow: 0 0 0 10px #ffa500;
 }
 
 #oclockdiv > div{
@@ -48,7 +48,7 @@ label
 }
 
 #oclockdiv div > span{
-  padding: 15px;
+  padding: 10px;
   border-radius: 3px;
   display: inline-block;
   background: linear-gradient(to right, #fdb768, #fb8604);
@@ -63,10 +63,11 @@ label
   display: inline-block;
   font-weight: 100;
   text-align: center;
-  font-size: 30px;
+  font-size: 55px;
   background: linear-gradient(to right, #f6c309, #fadb6b);
-  box-shadow: 0 0 0 10px white;
+  box-shadow: 0 0 0 10px #ffa500;
   margin-bottom: 20px;
+  color: white;
 }
 
 #pclockdiv > div{
@@ -76,11 +77,9 @@ label
 }
 
 #pclockdiv div > span{
-  padding: 15px;
   border-radius: 3px;
   display: inline-block;
   background: linear-gradient(to right, #fdb768, #fb8604);
-  font-size: 150%;
 }
 
 .hidden {
@@ -117,4 +116,15 @@ button {
   display:block;
   margin:0.4em auto;
  }
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+}
+
+#next {
+  visibility: hidden;
 }

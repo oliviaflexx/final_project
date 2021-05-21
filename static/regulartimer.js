@@ -74,7 +74,7 @@ function initializeClockp(id, endtime, pendtime) {
     
     if (treset == 0) {
       const qdeadline = makeQuestionDeadline(length, mc_count);
-      initializeClockp('pclockdiv', deadline, qdeadline);
+      initializeClockp('pclockdiv', endtime, qdeadline);
       up = up + 1;
       document.getElementById('question').innerHTML = "Question # " + up;
       treset = 1;
@@ -92,10 +92,10 @@ var mc_count0 = document.getElementById('mc_count');
 var mc_count = Number(mc_count0.innerHTML);
 var up = 1;
 
-const deadline = makedeadline(length);
-const qdeadline = makeQuestionDeadline(length, mc_count);
 
 document.getElementById('start').addEventListener('click', function () {
+  const deadline = makedeadline(length);
+  const qdeadline = makeQuestionDeadline(length, mc_count);
   initializeClock('oclockdiv', deadline);
   initializeClockp('pclockdiv', deadline, qdeadline);
   document.getElementById('start').style.visibility = "hidden";
