@@ -29,12 +29,14 @@ function initializeClock(id, endtime) {
     ohoursSpan.innerHTML = ('0' + t.ohours).slice(-2);
     ominutesSpan.innerHTML = ('0' + t.ominutes).slice(-2);
     osecondsSpan.innerHTML = ('0' + t.oseconds).slice(-2);
-
+    
+    percent = (t.ototal / (length * 3600000)) * 100;
+    progressBarOverall.style.setProperty('--width', percent);
+    
     if (t.ototal <= 0) {
       clearInterval(timeinterval);
     }
   }
-  
   updateClock();
   const timeinterval = setInterval(updateClock, 1000);
 }
@@ -61,7 +63,11 @@ function initializeClockp(id, endtime, pendtime) {
     phoursSpan.innerHTML = ('0' + t.ohours).slice(-2);
     pminutesSpan.innerHTML = ('0' + t.ominutes).slice(-2);
     psecondsSpan.innerHTML = ('0' + t.oseconds).slice(-2);
-
+    
+    
+    percent = (t.ototal / ((length / mc_count) * 3600000)) * 100;
+    progressBarQuestion.style.setProperty('--width', percent);
+    
     if (t.ototal <= 0) {
       clearInterval(timeintervalp);
       treset = 0;
@@ -80,7 +86,6 @@ function initializeClockp(id, endtime, pendtime) {
       treset = 1;
     }
   }
-  
   updateClockp();
   const timeintervalp = setInterval(updateClockp, 1000);
 }
@@ -91,7 +96,8 @@ var length = Number(length0.innerHTML);
 var mc_count0 = document.getElementById('mc_count');
 var mc_count = Number(mc_count0.innerHTML);
 var up = 1;
-
+const progressBarOverall = document.getElementById('overall-bar');
+const progressBarQuestion = document.getElementById('question-bar');
 
 document.getElementById('start').addEventListener('click', function () {
   const deadline = makedeadline(length);
@@ -100,4 +106,3 @@ document.getElementById('start').addEventListener('click', function () {
   initializeClockp('pclockdiv', deadline, qdeadline);
   document.getElementById('start').style.visibility = "hidden";
 });
-

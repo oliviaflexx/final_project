@@ -30,6 +30,9 @@ function initializeClock(id, endtime) {
     ominutesSpan.innerHTML = ('0' + t.ominutes).slice(-2);
     osecondsSpan.innerHTML = ('0' + t.oseconds).slice(-2);
 
+    percent = (t.ototal / length) * 100;
+    progressBarOverall.style.setProperty('--width', percent);
+    
     if (t.ototal <= 0) {
       if (timeinterval) {
         clearInterval(timeinterval);
@@ -75,7 +78,10 @@ function clicky2(qdeadline, endtime) {
     //get time remaining
     const t = getTimeRemaining(qdeadline);
     const ot = getTimeRemaining(endtime);
-    
+    if (z == 1) {
+      start = t.ototal;
+      z = 0;
+    }
     if (w == 1) {
       t.ototal = 1;
       phoursSpan.innerHTML = '00';
@@ -86,8 +92,10 @@ function clicky2(qdeadline, endtime) {
       phoursSpan.innerHTML = ('0' + t.ohours).slice(-2);
       pminutesSpan.innerHTML = ('0' + t.ominutes).slice(-2);
       psecondsSpan.innerHTML = ('0' + t.oseconds).slice(-2);
+      
+      percent = (t.ototal / start) * 100;
+      progressBarQuestion.style.setProperty('--width', percent);
     }
-    
     
     if (t.ototal <= 0) {
       newcounter = document.getElementById('question').innerHTML;
@@ -109,6 +117,7 @@ function clicky2(qdeadline, endtime) {
       qdeadline0 = clicky(endtime);
       qdeadline = qdeadline0.qdeadline;
       y = 0;
+      z = 1;
       clicky2(qdeadline, endtime);
     }
   }
@@ -124,10 +133,14 @@ var c = 1;
 var x = 0;
 var y = 0;
 var w = 0;
+var z = 1;
 
 var mc_count0 = document.getElementById('mc_count');
 var mc_count = Number(mc_count0.innerHTML) + 1;
 var counter = 0;
+
+const progressBarOverall = document.getElementById('overall-bar');
+const progressBarQuestion = document.getElementById('question-bar');
 
 document.getElementById('start').addEventListener('click', function () {
   const deadline = makedeadline(length);
@@ -138,3 +151,4 @@ document.getElementById('start').addEventListener('click', function () {
   document.getElementById('start').style.visibility = "hidden";
   document.getElementById('next').style.visibility = "visible";
 });
+

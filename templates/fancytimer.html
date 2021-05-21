@@ -26,6 +26,7 @@
 <div>
   <button id="next" onclick="stop()">Next</button>
 </div>
+<div class="progress-bar" id="question-bar" style="--width: 100"></div>
 <br>
 <h2>Overall Exam Clock</h2>
 <div id="oclockdiv">
@@ -41,7 +42,9 @@
     <span class="oseconds"></span>
     <div class="smalltext">Seconds</div>
   </div>
-</div>
+</div> <br>
+<br>
+<div class="progress-bar" id="overall-bar" style="--width: 100"></div>
 <div id="length" class="hidden">{{ length }}</div>
 <div id="mc_count" class="hidden">{{ mc_count }}</div>
 <script src="/static/fancytimer.js"></script>
