@@ -36,6 +36,17 @@ def index():
         if not length or length == '0':
             sorry = "You didn't enter an exam length"
             return render_template("sorry.html", sorry=sorry)
+            
+        x = length.isnumeric()
+        if x == False:
+            sorry = "You didn't enter a number"
+            return render_template("sorry.html", sorry=sorry)
+            
+        y = mc_count.isnumeric()
+        if y == False:
+            sorry = "You didn't enter a number"
+            return render_template("sorry.html", sorry=sorry)
+            
         if not mc_count or mc_count == '0':
             sorry = "You didn't enter an amount of questions"
             return render_template("sorry.html", sorry=sorry)
